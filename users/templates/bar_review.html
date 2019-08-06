@@ -1,0 +1,19 @@
+<h1>리뷰쓰기입니다</h1>
+<form method="POST" action="{% url 'bar_review' bar.id %}">
+        {% csrf_token %}
+        <h4>Bar: {{bar.name}} </h4>
+        <br>
+            <select name="rating"> 
+                <option value="">몇점</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </h4>
+        <h4>리뷰 작성: </h4>
+        <textarea name="content" cols="40" rows="10"></textarea>
+        <br><br>
+        <input class="btn btn-dark" type="submit" value="작성하기">
+    </form>

@@ -1,0 +1,20 @@
+<h1>메세지함입니당</h1>
+<!-- 오래된거부터 정렬되어서 나옴 -->
+<!-- {% for message in message.all%}
+{% csrf_token %}
+<div style="border-width: thick;">
+    <p>To: {{message.message_to}} </p>
+    <p>From: {{message.message_from}}</p>
+    <p>Text: {{message.summary}} <a href="{% url 'message_detail' message.id%}">더보기...</a></p>
+    <br>
+
+</div>
+
+{%endfor%} -->
+
+{% for user in user_list %}
+    <a href="{% url 'message_room' user.id %}"> {{user}} </a>
+    <br>
+{% endfor %}
+
+

@@ -1,0 +1,38 @@
+
+<style>
+  input:focus {
+    border-bottom: 1px solid #E91E63 !important;
+    box-shadow: 0 1px 0 0 #E91E63 !important;
+  }
+  label.active {
+    color: #E91E63;
+  }
+  </style>
+  {% if error_message %}
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card white darken-1">
+          <div class="card-content black-text">
+            <span class="card-title">로그인</span>
+            <p>{{error_message}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+           
+  {% endif %}
+  <div style="margin-left:10px; margin-right:10px">
+  <form method="POST" action="{% url 'login' %}">
+      {%csrf_token%}
+      <p style="font-size:17px">아이디:</p>
+      <input name="username" type="text" value="">
+      <br>
+      <br>
+      <p style="font-size:17px">비밀번호:</p>
+      <input name="password" type="password" value="">
+      <br>
+      <br>
+      <a class= "right waves-effect waves-light btn-small title_sub pink" ><input type="submit" style="color:white;" value="로그인"></a>
+  </form>
+  </div>
+  

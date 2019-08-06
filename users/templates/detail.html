@@ -1,0 +1,21 @@
+<h1>디테일 페이지 입니다</h1>
+{% csrf_token %}
+<p>TO: {{message.message_to}}</p>
+<p>FROM: {{message.message_from}}</p>
+<p>우리 {{message.number}}명에서 갈건디</p>
+<br>
+<p>TEXT: {{message.text}}</p>
+
+{% if user == message.message_to %}
+<a href="{% url 'message_box' type='to' %}">뒤로가기</a>
+{% endif %}
+{% if user == message.message_from %}
+<a href="{% url 'message_box' type='from' %}">뒤로가기</a>
+{% endif %}
+
+<!-- id는 숫자로 -->
+{% if user == message.message_to %}
+<a href="{% url 'message_post' user_id=message.message_from.id %}">답장하기</a> 
+{% endif %}
+
+<a href="{% url 'message_delete' message.id %}">삭제하기</a>

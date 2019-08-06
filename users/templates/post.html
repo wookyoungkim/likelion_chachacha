@@ -1,0 +1,19 @@
+<form method="POST" action="{% url 'message_post' message_to.id %}">
+    {% csrf_token %}
+    <h4>To: {{message_to}} </h4>
+    <br>
+    <h4>From: {{message_from}}</h4>
+    <h4>
+        <select name="number"> 
+            <option value="">몇명</option>
+            <option value="1">1명</option>
+            <option value="2">2명</option>
+            <option value="3">3명</option>
+        </select>
+    에서 왔어욤
+    </h4>
+    <h4>쪽지 작성: </h4>
+    <textarea name="text" cols="40" rows="10"></textarea>
+    <br><br>
+    <input class="btn btn-dark" type="submit" value="보내기">
+</form>
