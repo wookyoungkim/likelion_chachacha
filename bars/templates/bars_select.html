@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+    <form action="{% url 'bars_select'%}" method="POST">
+        {%csrf_token%}
+        <input id="sampleCheckbox" type="checkbox" name="mood1" value="True"> mood1<br>
+        <input id="sampleHidden" type="hidden" name="mood1"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="mood2" value="True"> mood2<br>
+        <input id="sampleHidden" type="hidden" name="mood2"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="mood3" value="True"> mood3<br>
+        <input id="sampleHidden" type="hidden" name="mood3"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="mood4" value="True"> mood4<br>
+        <input id="sampleHidden" type="hidden" name="mood4"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="mood5" value="True"> mood5<br>
+        <input id="sampleHidden" type="hidden" name="mood5"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="mood6" value="True"> mood6<br>
+        <input id="sampleHidden" type="hidden" name="mood6"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="mood7" value="True"> mood7<br>
+        <input id="sampleHidden" type="hidden" name="mood7"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="mood8" value="True"> mood8<br>
+        <input id="sampleHidden" type="hidden" name="mood8"/>
+
+
+        <input id="sampleCheckbox"  type="checkbox" name="chicken" value="True"> chicken<br>
+        <input id="sampleHidden" type="hidden" name="chicken"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="jokbal" value="True"> jokbal<br>
+        <input id="sampleHidden" type="hidden" name="jokbal"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="ijakaya" value="True"> ijakaya<br>
+        <input id="sampleHidden" type="hidden" name="ijakaya"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="gogi" value="True"> gogi<br>
+        <input id="sampleHidden" type="hidden" name="gogi"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="joongkuk" value="True"> joongkuk<br>
+        <input id="sampleHidden" type="hidden" name="joongkuk"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="whui" value="True"> whui<br>
+        <input id="sampleHidden" type="hidden" name="whui"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="pojang" value="True"> pojang<br>
+        <input id="sampleHidden" type="hidden" name="pojang"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="junjip" value="True"> junjip<br>
+        <input id="sampleHidden" type="hidden" name="junjip"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="pizza" value="True"> pizza<br>
+        <input id="sampleHidden" type="hidden" name="pizza"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="hopjip" value="True"> hopjip<br>
+        <input id="sampleHidden" type="hidden" name="hopjip"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="gookbab" value="True"> gookbab<br>
+        <input id="sampleHidden" type="hidden" name="gookbab"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="yang" value="True"> yang<br>
+        <input id="sampleHidden" type="hidden" name="yang"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="hansik" value="True"> hansik<br>
+        <input id="sampleHidden" type="hidden" name="hansik"/>
+
+
+        <input id="sampleCheckbox"  type="checkbox" name="inwon_xsmall" value="True"> inwon_xsmall<br>
+        <input id="sampleHidden" type="hidden" name="inwon_xsmall"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="inwon_small" value="True"> inwon_small<br>
+        <input id="sampleHidden" type="hidden" name="inwon_small"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="inwon_medium" value="True"> inwon_medium<br>
+        <input id="sampleHidden" type="hidden" name="inwon_medium"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="inwon_large" value="True"> inwon_large<br>
+        <input id="sampleHidden" type="hidden" name="inwon_large"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="inwon_xlarge" value="True"> inwon_xlarge<br>
+        <input id="sampleHidden" type="hidden" name="inwon_xlarge"/>
+
+
+        <input id="sampleCheckbox"  type="checkbox" name="silwoi" value="True"> silwoi<br>
+        <input id="sampleHidden" type="hidden" name="silwoi"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="silne" value="True"> silne<br>
+        <input id="sampleHidden" type="hidden" name="silne"/>
+
+        <input id="sampleCheckbox"  type="checkbox" name="gongyong" value="True"> gongyong<br>
+        <input id="sampleHidden" type="hidden" name="gongyong"/>
+
+        <input  id="sampleCheckbox" type="checkbox" name="bulli" value="True"> bulli<br>
+        <input id="sampleHidden" type="hidden" name="bulli"/>
+
+
+
+
+
+
+
+        <input class="select_done" type="submit" style="color:black;" >
+
+    </form>
+
+</body>
+</html>
+
+
+
+<script>
+$(document).ready(function(){
+if ($('#sampleCheckbox').is(":checked")) {
+    $('#sampleHidden').val('True');
+} else {
+    $('#sampleHidden').val('False');
+}
+});
+
+
+</script>

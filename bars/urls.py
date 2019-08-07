@@ -11,5 +11,6 @@ urlpatterns = [
     path('', bars.views.home),
     path('detail/<int:bar_id>', bars.views.bar_detail, name='bar_detail'),
     # path('detail/<int:bar_id>/reviews', users.views.create_review, name='bar_review')
+    path('bars_select', bars.views.bar_select, name='bars_select'),
 ]
 
