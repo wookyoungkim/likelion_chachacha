@@ -1,20 +1,101 @@
-<h1>메세지함입니당</h1>
-<!-- 오래된거부터 정렬되어서 나옴 -->
-<!-- {% for message in message.all%}
-{% csrf_token %}
-<div style="border-width: thick;">
-    <p>To: {{message.message_to}} </p>
-    <p>From: {{message.message_from}}</p>
-    <p>Text: {{message.summary}} <a href="{% url 'message_detail' message.id%}">더보기...</a></p>
-    <br>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-</div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="nav_wrapper">
+            <a href="{% url 'users' %}" class="back" alt="back">뒤로</a>
+            <p href="#!" class="title">메세지</p>
+        </div>
+    </nav>
+    <div class="container">
+        {% for user in user_list %}
+            <div class="message_box_detail">
+                <a href="{% url 'message_room' user.id %}">
+                    <div class="message_box_detail_top">
+                        <p class="message_box_detail_username">{{user}}</p>
+                        <p class="message_box_detail_arrow" href="{% url 'message_room' user.id %}">더보기</p>
+                    </div>
+                    <p class="message_box_detail_name">{{user.name}}</p>
+                </a>
+            </div>
+            
+        {% endfor %}
+    </div>
+    
 
-{%endfor%} -->
+</body>
+</html>
 
-{% for user in user_list %}
-    <a href="{% url 'message_room' user.id %}"> {{user}} </a>
-    <br>
-{% endfor %}
-
-
+<style>
+    nav{
+        color: black;
+        background-color: white;
+        width: 100%;
+        height: 56px;
+        line-height: 56px;
+        box-shadow:none;
+    }
+    .nav_wrapper{
+        position: relative;
+        height: 100%;
+    }
+    .title{
+        position: absolute;
+        color: black;
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 0;
+        margin: 0 0 0 27%;
+        text-align: center;
+    }
+    .back{
+        float: left;
+        position: relative;
+        height: 56px;
+        margin: 0 18px;
+    }
+    nav a{
+        color: black;
+    }
+    .container{
+        position: relative;
+        margin-right: 0;
+        
+    }
+    .message_box_detail{
+        border-bottom: solid rgb(255,120,137) thin;
+        width: 100%;
+        padding: 3% 0 0 0;
+    }
+    .message_box_detail_username{
+        font-size: 1.2rem;
+        color: black;
+        font-weight: bold;
+        margin: 1% 0;
+        width: 50%;
+        
+    }
+    .message_box_detail_name{
+        color: rgb(155, 155, 155);
+        margin-top: 0;
+    }
+    .message_box_detail_arrow{
+        float: right;
+        margin-top: -5%;
+        margin-right: 5%;
+    }
+    .message_box_detail_top{
+        display: inline;
+    }
+</style>

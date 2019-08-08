@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav_wrapper">
+            <a href="{% url 'mypage' %}" class="back" alt="back">뒤로</a>
+            <div class="title">{{route.name_route}}</div>  
+        </div>
+    </nav>
+    
+    {% for bar in routes %}
+        <div class="bar_tag">
+            <a href="{% url 'bar_detail' bar.id %}">
+                <div class="bar_name">{{bar.name}}</div>
+                <div class="bar_keyword">{{bar.keyword}}</div>
+                <div class="bar_keyword">{{bar.summary}}</div>
+            </a>
+        </div>
+    {% endfor %}
+</body>
+</html>
+
+<style>
+    nav{
+        color: black;
+        background-color: white;
+        width: 100%;
+        height: 56px;
+        line-height: 56px;
+        box-shadow:none;
+    }
+    .nav_wrapper{
+        position: relative;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+    .title{
+        color: black;
+        font-size: 1.5rem;
+        padding: 0;
+        margin-right: 56px;
+        height: 1.5rem;
+    }
+    .user_name{
+        color: rgb(155, 155, 155);
+        margin-right: 56px;
+        
+    }
+    .back{
+        float: left;
+        position: relative;
+        height: 56px;
+        margin: 0 18px;
+    }
+    nav a{
+        color: black;
+    }
+    .container{
+        position: relative;
+        padding: 3%;
+    }
+    .bar_tag{
+        background-color: rgb(155, 155, 155);
+        width: 80%;
+        padding: 2% 5%;
+        height: 12vh;
+        border-radius: 0.7rem;
+        margin-bottom: 3% !important;
+        margin:0 auto;
+    }
+    .bar_name{
+        color: white;
+    }
+    .bar_detail{
+        color: white;
+        margin: 0;
+    }
+</style>

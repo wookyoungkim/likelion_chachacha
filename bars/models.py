@@ -27,6 +27,7 @@ class Bar(models.Model):
     location_url = models.TextField(max_length=200,null=True,blank=True) 
     keyword = models.CharField(max_length=80, null=True) 
     # address = models.CharField(max_length=300, null=True) 
+    hours=models.CharField(max_length=80,null=True)
     menu = models.CharField(max_length=150, null=True, blank=True)
     bar_phone = models.IntegerField(null=True)
 

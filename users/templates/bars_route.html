@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    
+
+    <nav>
+        <div class="nav_wrapper">
+            <a href="#!" class="back" alt="back" style="margin-right:0%;"><i class="material-icons">chevron_left</i></a>
+            <div class="title center-align">마이 차차차</div>
+        </div>
+    </nav>
+    <div class="n" style="margin-left:5%; margin-right:5%; margin-top:10%;">
+    <center>
+    {% for i in routes %}
+        <div class="card-group" >
+            <div class="cards" ><!--style="col s12 m6 mx-auto"-->
+                <div class="card-image">
+                    <img src="#!">
+                </div>
+                <div class="card-action">
+                    <a href="{% url 'route_detail' i.id%}" style="color:black">{{i}}</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </center>
+    </div>
+
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
+
+<style>
+nav{
+        color: white;
+        background-color: white;
+        box-shadow:none;
+        width: 100%;
+        height: 56px;
+        line-height: 56px;
+    }
+    .nav_wrapper{
+        position: relative;
+        height: 100%;
+    }
+    .title{
+        position: absolute;
+        color: black;
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 0;
+        margin: 0 0 0 25%;
+        text-align: center;
+    }
+    .back{
+        float: left;
+        position: relative;
+        height: 56px;
+        margin: 0 18px;
+    }
+    nav a{
+        color: black;
+    }
+
+
+    .cards{
+        width: 48%;
+        border-radius:0.7rem;
+        box-shadow:none;
+        border:solid 2px #ff7889;
+        padding: 3%;
+        display: inline-block;
+        float: left;
+        margin: 0.2rem;
+    }
+    .card-image{
+        border-radius:0.7rem;
+
+    }
+    .card-action{
+
+        border-radius:0.7rem;
+    }
+    .material-icons{
+        medium: 4rem;
+    }
+</style>

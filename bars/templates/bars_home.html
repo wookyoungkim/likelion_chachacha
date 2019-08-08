@@ -1,1 +1,22 @@
-bars
+home
+
+
+
+
+<form action="{% url 'select' %}" method="POST">
+    {%csrf_token%}
+
+    {% for i in bar %}
+    {{i}}  
+    <input type="checkbox" value="{{i.id}}" name="bar_id_name">
+    {% endfor %}
+
+
+    <input class="btn btn-primary" type="submit" >
+</form>
+
+
+<a href="{% url 'done_select' %}"> done </a>
+
+
+{{current_user_id}}

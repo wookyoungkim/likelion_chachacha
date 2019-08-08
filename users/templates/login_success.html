@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="background-color: rgb(255,120,137);">
+    <div class="container">
+        <img class="login_logo" src="/static/logo_white.png" alt="chachacha">
+        <div>
+            <p class="comment">차차차 회원이 되신 것을 <br>
+                축하드립니다.
+            </p>
+        </div>
+        <div>
+            <a href="{% url 'login' %}"><button class="button waves-effect waves-light" name="action">로그인</button></a>
+            
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
+<style>
+.container{
+    position: relative;
+    padding: 10%;
+    text-align: center;
+}
+.login_logo{
+    margin: 50% 0 10% 0;
+}
+.comment{
+    color: white;
+    margin-bottom: 40%;
+}
+.button{
+    text-decoration: none;
+    color: rgb(255,120,137);
+    font-size: 0.9rem;
+    background-color: white;
+    border-radius: 0.7rem;
+    width: 50%;
+    height: 6%;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+}
+
+</style>

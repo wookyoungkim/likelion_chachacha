@@ -1,90 +1,124 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="nav_wrapper">
+            <a href="{% url 'users' %}" class="back" alt="back">뒤로</a>
+            <p class="title">회원가입</p>
+        </div>
+    </nav>
+    <div class="container">
+        <form method="POST" action="{% url 'signup_owner' %}">
+        <div>
+          <div>
+            <p class="heading">아이디</p>
+            <textarea class="textbox" name="username" id="" cols="30" rows="10" placeholder="아이디 입력"></textarea>
+          </div>
+    
+          <div>
+            <p class="heading">비밀번호</p>
+            <textarea class="textbox" name="password1" id="" cols="30" rows="10" placeholder="비밀번호 입력"></textarea>
+            <textarea class="textbox" name="password2" id="" cols="30" rows="10" placeholder="비밀번호 재입력"></textarea>
+            <br>
+          </div>
+
+          <div>
+              <p class="heading">성명</p>
+              <textarea class="textbox" name="name" id="" cols="30" rows="10" placeholder="이름 입력"></textarea>
+          </div>
+
+          <div>
+              <p class="heading">전화번호</p>
+              <textarea class="textbox" name="name" id="" cols="30" rows="10" placeholder="'-'구분 없이 입력"></textarea>
+            </div>
+
+          <br><br>
+        </div>
+        <div style="text-align:center;">
+          <button class="button waves-effect waves-light" type="submit" name="action">다음</button>
+        </div>
+        
+        </form>
+    </div>
+</body>
+</html>
 
 <style>
-  input:focus {
-    border-bottom: 1px solid #E91E63 !important;
-    box-shadow: 0 1px 0 0 #E91E63 !important;
-  }
-  label.active {
-    color: #E91E63;
-  }
-  </style>
-  <!--   타이틀-->          
-  <a class="title_sub waves-effect waves-light btn-small pink"><b>회원가입</b></a>
-      
-  <!--   개인정보-->
-  <div class="row">
-      <form class="col s12" method="POST" action="{% url 'signup_owner'%}" enctype="multipart/form-data">
-      {%csrf_token%}
-        <div class="row">
-          <div class="input-field col s12">
-          <input type="text", name="username" required="true">
-            <label style="color: #E91E63;" for="first_name">아이디</label>
-          </div>
-        </div>
-          
-        <div class="row">
-          <div class="input-field col s12">
-            <input type="text", name="name" required="true">
-            <label style="color: #E91E63;" for="first_name">이름</label>
-          </div>
-        </div>        
-               
-        <div class="row">
-          <div class="input-field col s12">
-          <input name="password1" type="password" value="" required="true">
-            <label style="color: #E91E63;" for="password">비밀번호</label>
-          </div>
-        </div>
-      
-        <div class="row">
-          <div class="input-field col s12">
-          <input name="password2" type="password" value="" required="true">
-            <label style="color: #E91E63;" for="password">비밀번호 확인</label>
-          </div>
-        </div>
-          <br>
-  
-      
-          
-  
-      <div class="row">
-          <div class="input-field col s12">
-              <h6>성별</h6>
-              <p>
-                  <label>
-                      <input name="gender" type="radio" value='female' required="true"/>
-                      <span>여성</span>
-                    </label> 
-              </p>
-                <p>
-                    <label>
-                      <input name="gender" type="radio" value='male' required="true"/>
-                      <span>남성</span>
-                    </label>
-              </p>
-          
-          </div>
-        </div>
-          <br>
-  
-          <div class="row">
-              <div class="input-field col s12">
-                  <input type="text", name="owner_bar_name" required="true">
-                  <label style="color: #E91E63;">가게이름</label>
-              </div>
-          </div>
-  
-          
-          <div class="row">
-              <div class="input-field col s12">
-                  <input type="text", name="owner_bar_phone" required="true">
-                  <label style="color: #E91E63;">전화번호</label>
-              </div>
-          </div>
-          
-  
-          <input type="submit" value="가입하기"></a>
-      </form>
-    </div>
-    <br><br><br><br><br><br><br>
-  
+    nav{
+        box-shadow:none;
+        color: black;
+        background-color: white;
+        width: 100%;
+        height: 56px;
+        line-height: 56px;
+    }
+    .nav_wrapper{
+        position: relative;
+        height: 100%;
+    }
+    .title{
+        position: absolute;
+        color: black;
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 0;
+        margin: 0 0 0 25%;
+        text-align: center;
+    }
+    .back{
+        float: left;
+        position: relative;
+        height: 56px;
+        margin: 0 18px;
+    }
+    nav a{
+        color: black;
+    }
+    .container{
+        position: relative;
+        padding: 5%;
+    }
+    .choice_logo{
+        width: 70%;
+        margin-bottom: 20%;
+    }
+    .textbox{
+      border-radius: 0.7rem;
+      border-color: rgb(255,120,137);
+      margin: 0 0 3% 0;
+      height: 6%;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+    .heading{
+      width: 100%;
+      margin-bottom: 0.5rem;
+      float: left;
+    }
+    .button{
+      text-decoration: none;
+      color: #fff;
+      background-color: rgb(255,120,137);
+      border-radius: 0.7rem;
+      width: 50%;
+      height: 6%;
+      text-align: center;
+      letter-spacing: .5px;
+      -webkit-transition: background-color .2s ease-out;
+      transition: background-color .2s ease-out;
+      cursor: pointer;
+    }
+   
+        
+
+</style>

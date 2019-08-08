@@ -3,7 +3,7 @@ from django.contrib import auth
 from django.shortcuts import render, redirect
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import User, Message
+from .models import User, Message, Heart, Review
 from django.db.models import Q
 from .forms import MessagePost
 from django.contrib.auth.decorators import login_required
@@ -160,16 +160,128 @@ def message_delete(request, message_id):
 def create_review(request, bar_id):
     bar=get_object_or_404(Bar, pk=bar_id)
     if request.method == 'POST':
-        review_author = request.user
-        review_bar = request.bar
-        content = request.POST['content']
-        rating = request.POST['rating']
-        # review=form.save(commit=False)
-        # review.bar=bar
-        # review.save()
+        review = Review()
+        review.review_author = request.user
+        review.review_bar = bar
+        review.content = request.POST['content']
+        review.rating = request.POST['rating']
+        review.save()
         return redirect('/bars/detail/'+ str(bar.id), {'bar':bar})
     elif request.method == 'GET':
         return render(request, 'bar_review.html', {'bar':bar})
     
 
     
+def select(request):
+    if not request.user.first:
+        dt = datetime.now()
+        df = DateFormat(dt)
+        df.format(get_format('DATE_FORMAT'))
+        df.format('Y-m-d')
+        tmp_first = request.POST['bar_id_name']
+        obj = Product.objects.get(pk=tmp_first)
+        current_user = request.user
+        current_user.first = obj
+        current_user.first_date = dt
+        current_user.save()
+
+    elif not request.user.second:
+        tmp_second = request.POST['bar_id_name']
+        obj = Product.objects.get(pk=tmp_second)
+        current_user = request.user
+        current_user.second = obj
+        current_user.save()
+
+    elif not request.user.third:
+        tmp_third = request.POST['bar_id_name']
+        obj = Product.objects.get(pk=tmp_third)
+        current_user = request.user
+        current_user.third = obj
+        current_user.save()
+    
+    return redirect('home')
+
+
+    
+def done_select(request):
+    route = Route()
+    current_user = request.user
+    route.author = current_user
+    route.pub_date = current_user.first_date
+    route.first_bar = current_user.first
+    if current_user.second:
+        route.second_bar = current_user.second
+    elif current_user.thire:
+        route.third_bar = current_user.third
+
+    route.save()
+
+    current_user.first = None
+    current_user.second = None
+    current_user.third = None
+
+    current_user.save()
+
+    return redirect('home')
+
+def select_signup(request):
+    return render(request,'select_signup.html')
+
+def login_success(request):
+    return render(request, 'login_success.html')
+
+def heart_bar(request, bar_id):
+    user = request.user
+    bar = get_object_or_404(Bar, id=bar_id)
+    try: #조와요 삭 제 
+        preexisiting_heart = Heart.objects.get(user_heart=user, bar_heart=bar)
+        preexisiting_heart.delete()
+        hearts=Heart.objects.filter(bar_heart=bar)
+        count=hearts.count()
+        return redirect('/bars/detail/' + str(bar.id))    #바 디테일로 
+    except Heart.DoesNotExist:  #처음 조 와 요 
+        heart= Heart()
+        heart.user_heart = user
+        heart.bar_heart = bar
+        hearts=Heart.objects.filter(bar_heart=bar)
+        count=hearts.count()
+        heart.save()
+        return redirect('/bars/detail/' + str(bar.id))    #바 디테일로
+
+
+def mypage_bars(request):
+    user=request.user
+    hearts = Heart.objects.filter(user_heart=user)
+    bar_list=[]
+    for i in hearts:
+        bar_list.append(i.bar_heart)
+    return render(request, 'mypage_bars.html', {'bar_list':bar_list})
+
+
+
+def mypage(request):
+    current_user = request.user
+    routes = Route.objects.filter(route_author=current_user)
+    return render(request,'bars_route.html', {'routes':routes})
+
+def route_detail(request, route_id):
+    current_user = request.user
+    routes = get_object_or_404(Route, pk = route_id)
+    # #route_detail = Route.objects
+    # #route_pk = route_id
+    route_list = []
+    if routes.first_bar:
+        route_list.append(routes.first_bar)
+    if routes.second_bar:
+        route_list.append(routes.second_bar)
+    if routes.third_bar:
+        route_list.append(routes.third_bar)
+    if routes.fourth_bar:
+        route_list.append(routes.fourth_bar)
+    if routes.fifth_bar:
+        route_list.append(routes.fifth_bar)
+
+    #route_show = Route.objects.annotate(id = route_detail_id)
+   # route_show = route_show[0].route_author
+    # return render(request,'route.html', {'routes':route_detail, 'route_pk':route_pk})   
+    return render(request,'route.html', {'routes':route_list, 'route':routes})

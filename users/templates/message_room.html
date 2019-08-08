@@ -8,42 +8,154 @@
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <meta name="description" content="">
     <meta name="author" content="">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-      <!-- 합쳐지고 최소화된 최신 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-    <h3>{{owner}}와의 메세지함입니당</h3>
-    <br>
-    <div>
-        {% for message in messages.all %}
-            {% if user == message.message_from %}
-                <div style="float:right; margin-right:70%;">
-                    <p>{{message.text}}</p>
+    <nav>
+        <div class="nav_wrapper">
+            <a href="{% url 'users' %}" class="back" alt="back">뒤로</a>
+            <div >
+                <div class="title">{{owner}}</div>
+                <div class="user_name">{{owner.name}}</div>
+            </div>
+            
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div>
+                {% for message in messages.all %}
+                    {% if user == message.message_from %}
+                        <div style="width:100%">
+                            <p class="message_sent">{{message.text}}</p>
+                            <br>
+                        </div>
+                    {% else %}
+                        <div style="width:100%">
+                            <p class="message_recieved">{{message.text}}</p>
+                            <br>
+                        </div>
                     <br>
+                        
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <div class="container">
+        <footer>
+            <form method="POST" action="{% url 'message_post' owner.id %}">
+                {% csrf_token %}
+                <div class="post_message">
+                    <textarea class="post_message_message" name="text" cols="40" rows="3" placeholder="메세지 입력"></textarea>
+                    <input class="button btn-dark" type="submit" value="전송">
                 </div>
-            {% else %}
-                <div style="float:left; width:100%;">
-                    <p>{{message.text}}</p>
-                    <br>
-                </div>
-            <br>
-                
-            {% endif %}
-        {% endfor %}
+            </form>
+        </footer>
     </div>
-    <form method="POST" action="{% url 'message_post' owner.id %}">
-        {% csrf_token %}
-        <textarea name="text" cols="40" rows="3"></textarea>
-        <input class="btn btn-dark" type="submit" value="보내기">
-    </form>
-    
-    
+    </div>
 </body>
+
+<style>
+    
+    nav{
+        color: black;
+        background-color: white;
+        width: 100%;
+        height: 56px;
+        line-height: 56px;
+        box-shadow:none;
+    }
+    .nav_wrapper{
+        position: relative;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+    .title{
+        color: black;
+        font-size: 1.5rem;
+        padding: 0;
+        margin-right: 56px;
+        height: 1.5rem;
+    }
+    .user_name{
+        color: rgb(155, 155, 155);
+        margin-right: 56px;
+        
+    }
+    .back{
+        float: left;
+        position: relative;
+        height: 56px;
+        margin: 0 18px;
+    }
+    nav a{
+        color: black;
+    }
+    .container{
+        position: relative;
+        padding: 3%;
+    }
+    
+    .message_sent{
+        background-color: rgb(255,120,137);
+        border-radius: 0.7rem;
+        padding: 3% 5%;
+        float: right;
+        color: rgb(255,255,255);
+        height: auto;
+    }
+    .message_recieved{
+        background-color: rgb(241,242,244);
+        border-radius: 0.7rem;
+        padding: 3% 5%;
+        float: left;
+        color: black;
+        height: auto;
+    }
+    .post_message{
+        border: solid thin;
+        border-color: rgba(36,38,51,0.19);
+        border-radius: 0.7rem;
+        float: left;
+        position: absolute;
+        
+    }
+    .post_message_message{
+        width: 78%;
+        padding: 3%;
+        border: none;
+    }
+    .button{
+        width: 20%;
+        text-decoration: none;
+        color: rgb(255,120,137);
+        background-color: white;
+        text-align: center;
+        letter-spacing: .5px;
+        -webkit-transition: background-color .2s ease-out;
+        transition: background-color .2s ease-out;
+        cursor: pointer;
+        float: right;
+        margin-top: 3%;
+        font-size: 1.2rem;
+        border: none;
+        text-align: center;
+    }
+body {
+    display: flex;
+    min-height: 92vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+</style>

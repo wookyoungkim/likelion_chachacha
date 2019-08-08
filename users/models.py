@@ -20,6 +20,13 @@ class User(AbstractUser):
     owner_bar_phone = models.IntegerField(blank=True, null=True)
     owner_bar_name = models.CharField(max_length=100, blank=True, null=True)
 
+
+    first = models.ForeignKey(Bar,on_delete=models.CASCADE, null=True,related_name='+', blank=True)
+    second = models.ForeignKey(Bar,on_delete=models.CASCADE, null=True,related_name='+', blank=True)
+    third = models.ForeignKey(Bar,on_delete=models.CASCADE, null=True,related_name='+', blank=True)
+
+    first_date = models.DateField(null=True, blank=True)
+
 class TimeStampedModel(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField(auto_now=True)
@@ -92,4 +99,22 @@ class Review(models.Model):
     rating = models.IntegerField()
 
     def __str__(self):
-        return (str(self.bar)+"에 대한 "+ str(self.author)+"의 댓글")
+        return (str(self.review_bar)+"에 대한 "+ str(self.review_author)+"의 댓글")
+
+class Heart(TimeStampedModel):
+    user_heart = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.PROTECT,
+        null=True, 
+        related_name='user_heart'
+        ) #좋아요 한 유저
+    bar_heart = models.ForeignKey(
+        Bar,
+        on_delete=models.SET_DEFAULT, 
+        default='알수없음',
+        null=True,
+        related_name='bar_heart'
+        ) #좋아요 받은 바
+
+    def __str__(self):
+        return (str(self.user_heart)+"가 "+ str(self.bar_heart)+"를 좋아합니다")

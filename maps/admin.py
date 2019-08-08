@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Loc
-# Register your models here.
+# from .models import Loc
+# # Register your models here.
 
-admin.site.register(Loc)
+# admin.site.register(Loc)

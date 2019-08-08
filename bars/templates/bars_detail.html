@@ -1,5 +1,104 @@
-<h1>디테일 페이지입니당</h1>
-<br>
-<p>{{bar.name}}</p>
 
 <a href="{% url 'bar_review' bar.id %}">리뷰작성</a>
+
+
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="utf-8">
+    <title>술집 메인</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
+    <style>
+        .button {
+            text-decoration: none;
+            color: #fff;
+            background-color: rgb(255, 120, 137);
+            border-radius: 0.7rem;
+            width: 40%;
+            /*여기도 다른부분*/
+            height: 6%;
+            text-align: center;
+            letter-spacing: .5px;
+            -webkit-transition: background-color .2s ease-out;
+            transition: background-color .2s ease-out;
+            cursor: pointer;
+            /*우경씨랑 다른부분*/
+            padding: 2%;
+        }
+
+        body {
+            font-family: 'NanumSquareRound', sans-serif;
+
+        }
+
+        .imagecontainer {
+            border-radius: 12px;
+            text-align: left;
+            background: blue;
+            margin: 2rem;
+            width: 100%;
+            padding: 2%;
+            color: white;
+        }
+
+        .suljipexplain {
+            border-radius: 12px;
+            z-index: 2;
+            opacity: 0.99;
+            padding: 3%;
+            margin: 5%;
+            margin-top: -17.5%;
+            background-color: white;
+        }
+
+        .thejasehi {
+            border-radius: 12px;
+            z-index: 2;
+            margin-top: -5%;
+            background-color: white;
+            margin: 5%;
+            text-align: center;
+            color: black;
+            padding: 2%;
+            opacity: 0.99;
+        }
+    </style>
+</head>
+<body style="background-color: #FFF1F3">
+    <div>
+        <img src="http://image.news1.kr/system/photos/2019/1/20/3477555/article.jpg" alt="X" width="100%;">
+        <!-- 술집이미지 들어가야합니다-->
+        <div class="suljipexplain">
+            <div style="float:right; float:right; margin-top:-6%; padding-right:1%">
+               <a href="tel:0"+{{bar.bar_phone}}> <img src={% static 'Group 2.png' %} alt="X"> </a>
+               <a href=""> <img src={% static 'Group 3.png' %} alt="X"> </a>
+            </div>
+            <div>
+                <h2>{{bar.name}}</h2>
+                <p style="color:#FF7889;"> <!--분위기태그--></p>
+                <p>{{bar.text}}</p>
+                <!--여기에 무드가 charfield로 변환되어서 들어와햡니다-->
+                <img src={% static 'Filled.png' %} alt="X">{{bar.location_url}} <br>
+
+                <img src={% static 'Filled (1).png' %} alt="X">{{bar.hours}}
+            </div>
+        </div>
+        <div class="thejasehi">
+                <span> 더 많은 정보 보기 </span> <a href="{% url 'bar_datail_detail' bar.id %}"><img src={% static 'Path.png' %} alt="X"></a>
+                <!--여기 path에 누르면 뎁스 하나 더있어서 자세한 페이지로 우경씨가 만들어준 더 들어가는페이지-->
+            </div>
+            
+            <div style="text-align:center;">
+               <a href="https://map.kakao.com/link/to/"+{{bar.name}},{{bar.lat}},{{bar.lng}}> <button class="button waves-effect waves-light" type="submit" name="action">여기로 차차차!</button></a>
+                <!--카카오지도로 넘겨주기 bar.lat , bal.lng 넘겨주면되는거같음  여기안됨쓰..-->
+            </div>
+        </div>
+    
+        </div>
+</body>
+
+</html>
