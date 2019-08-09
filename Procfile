@@ -1,0 +1,1 @@
+web: gunicorn chachacha.wsgi --log-file -
