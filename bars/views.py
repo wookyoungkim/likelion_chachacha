@@ -8,12 +8,17 @@ from users.models import User
 # from .forms import ReviewForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-
+import random
 
 # Create your views here.
 def home(request):
     bars = Bar.objects.all()
-    return render(request, 'bars_home.html', {'bar':bars})
+    current_user = request.user
+
+    out_bars = []
+    out_bars = random.choice(bars, k=4)
+
+    return render(request, 'bars_home.html', {'bar':out_bars, 'current_user':current_user})
 
 def bar_detail(request, bar_id):
     bar_detail=get_object_or_404(Bar, pk=bar_id)

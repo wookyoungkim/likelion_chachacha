@@ -24,7 +24,9 @@ class User(AbstractUser):
     first = models.ForeignKey(Bar,on_delete=models.CASCADE, null=True,related_name='+', blank=True)
     second = models.ForeignKey(Bar,on_delete=models.CASCADE, null=True,related_name='+', blank=True)
     third = models.ForeignKey(Bar,on_delete=models.CASCADE, null=True,related_name='+', blank=True)
-
+    fourth = models.ForeignKey(Bar,on_delete=models.CASCADE, null=True,related_name='+', blank=True)
+    fifth = models.ForeignKey(Bar,on_delete=models.CASCADE, null=True,related_name='+', blank=True)
+    
     first_date = models.DateField(null=True, blank=True)
 
 class TimeStampedModel(models.Model):
