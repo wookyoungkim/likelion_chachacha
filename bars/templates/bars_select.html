@@ -1,206 +1,232 @@
-{% load staticfiles %}
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-</head>
-<body>
+{% load staticfiles %}
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    
+
+    <nav>
+        <div class="nav_wrapper">
+            <a href="#!" class="back" alt="back" style="margin-right:0%;"><i class="material-icons">chevron_left</i></a>
+            <div class="title center-align" style="margin-left:20%;">차차차 START</div>
+        </div>
+    </nav>
 
     <form action="{% url 'bars_select'%}" method="POST">
-        {%csrf_token%}
+        {% csrf_token %}
         <!-- <div class="checkbox_tw">
         <label class="checkbox-wrap"><input id="sampleCheckbox" type="checkbox" name="mood1" value="True"><i class="check-icon"></i></label> -->
 
-        <div class="bar_select_cont">
-
-        <div class="checkbox_mood_cont">
-                <div class="checkbox_mood"> 
-                        <input id="mood1" type="checkbox" name="mood1" value="True"> mood1 <br>
-                        <!-- <input type="checkbox" id="myCheckbox1" /> -->
-                        <label for="mood1" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
-                </div>
-                        <div class="checkbox_mood"> 
-                <input id="mood2"  type="checkbox" name="mood2" value="True"> mood2<br>
-                <label for="mood2" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
-                </div>
-
-                <!-- <input id="sampleHidden" type="hidden" name="mood2"/> -->
-                <div class="checkbox_mood">
-                <input id="mood3"  type="checkbox" name="mood3" value="True"> mood3<br>
-                        <label for="mood3" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
-                </div>
-                <!-- <input id="sampleHidden" type="hidden" name="mood3"/> -->
-                <div class="checkbox_mood">
-                <input id="mood4"  type="checkbox" name="mood4" value="True"> mood4<br>
-                        <label for="mood4" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
-                </div>
-                <!-- <input id="sampleHidden" type="hidden" name="mood4"/> -->
-                <div class="checkbox_mood">
-                <input id="mood5"  type="checkbox" name="mood5" value="True"> mood5<br>
-                        <label for="mood5" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
-                </div>
-                <!-- <input id="sampleHidden" type="hidden" name="mood5"/> -->
-                <div class="checkbox_mood">
-                <input id="mood6"  type="checkbox" name="mood6" value="True"> mood6<br>
-                        <label for="mood6" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
-                </div>
-                <!-- <input id="sampleHidden" type="hidden" name="mood6"/> -->
-                <div class="checkbox_mood"> 
-                <input id="mood7"  type="checkbox" name="mood7" value="True"> mood7<br>
-                        <label for="mood7" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
-                </div>
-                <!-- <input id="sampleHidden" type="hidden" name="mood7"/> -->
-                <div class="checkbox_mood">
-                <input id="mood8"  type="checkbox" name="mood8" value="True"> mood8<br>
-                        <label for="mood8" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
-                </div>
-                <!-- <input id="sampleHidden" type="hidden" name="mood8"/> -->
-
-
-        </div>
-
-
         <div class="checkbox_bar_cont">
+        <div class="pont">어떤 술집을 가고싶어?</div>
         <div class="checkbox_bar">
-        <input id="chicken"  type="checkbox" name="chicken" value="True"> chicken<br>
-                <label for="chicken" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="chicken"  type="checkbox" name="chicken" value="True"> <br>
+                <label for="chicken" ><img style="width: 9.5rem" src="{% static 'chicken.png' %}" /></label>
         </div>
         <!-- <input id="sampleHidden" type="hidden" name="chicken"/> -->
         <div class="checkbox_bar">
-        <input id="jokbal"  type="checkbox" name="jokbal" value="True"> jokbal<br>
-                <label for="jokbal" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="jokbal"  type="checkbox" name="jokbal" value="True"> <br>
+                <label for="jokbal" ><img style="width: 9.5rem" src="{% static 'jokbal.png' %}" /></label>
         </div>
         <!-- <input id="sampleHidden" type="hidden" name="jokbal"/> -->
         <div class="checkbox_bar">
-        <input id="ijakaya"  type="checkbox" name="ijakaya" value="True"> ijakaya<br>
-                <label for="ijakaya" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="ijakaya"  type="checkbox" name="ijakaya" value="True"> <br>
+                <label for="ijakaya" ><img style="width: 9.5rem" src="{% static 'izakaya.png' %}" /></label>
         </div>
 
         <!-- <input id="sampleHidden" type="hidden" name="ijakaya"/> -->
         <div class="checkbox_bar">
-        <input id="gogi"  type="checkbox" name="gogi" value="True"> gogi<br>
-                <label for="gogi" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="gogi"  type="checkbox" name="gogi" value="True"> <br>
+                <label for="gogi" ><img style="width: 9.5rem" src="{% static 'meet.png' %}" /></label>
         </div>
 
         <!-- <input id="sampleHidden" type="hidden" name="gogi"/> -->
         <div class="checkbox_bar">
-        <input id="joongkuk"  type="checkbox" name="joongkuk" value="True"> joongkuk<br>
-                <label for="joongkuk" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="joongkuk"  type="checkbox" name="joongkuk" value="True"> <br>
+                <label for="joongkuk" ><img style="width: 9.5rem" src="{% static 'joogkuk.png' %}" /></label>
         </div>
         <!-- <input id="sampleHidden" type="hidden" name="joongkuk"/> -->
         <div class="checkbox_bar">
-        <input id="whui"  type="checkbox" name="whui" value="True"> whui<br>
-                <label for="whui" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="whui"  type="checkbox" name="whui" value="True"> <br>
+                <label for="whui" ><img style="width: 9.5rem" src="{% static 'hoi.png' %}" /></label>
         </div>
         <!-- <input id="sampleHidden" type="hidden" name="whui"/> -->
         <div class="checkbox_bar"> 
-        <input id="sampleCheckbox"  type="checkbox" name="pojang" value="True"> pojang<br>
-                <label for="pojang" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="sampleCheckbox"  type="checkbox" name="pojang" value="True"> <br>
+                <label for="pojang" ><img style="width: 9.5rem" src="{% static 'pojang.png' %}" /></label>
         </div>
         <!-- <input id="sampleHidden" type="hidden" name="pojang"/> -->
         <div class="checkbox_bar">
-        <input id="junjip"  type="checkbox" name="junjip" value="True"> junjip<br>
-                <label for="junjip" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="junjip"  type="checkbox" name="junjip" value="True"> <br>
+                <label for="junjip" ><img style="width: 9.5rem" src="{% static 'jeon.png' %}" /></label>
         </div>
         <!-- <input id="sampleHidden" type="hidden" name="junjip"/> -->
         <div class="checkbox_bar"> 
-        <input id="pizza"  type="checkbox" name="pizza" value="True"> pizza<br>
-                <label for="pizza" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="pizza"  type="checkbox" name="pizza" value="True"> <br>
+                <label for="pizza" ><img style="width: 9.5rem" src="{% static 'pizza.png' %}" /></label>
         </div>
         <!-- <input id="sampleHidden" type="hidden" name="pizza"/> -->
         <div class="checkbox_bar"> 
-        <input id="hopjip"  type="checkbox" name="hopjip" value="True"> hopjip<br>
-                <label for="hopjip" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="hopjip"  type="checkbox" name="hopjip" value="True"> <br>
+                <label for="hopjip" ><img style="width: 9.5rem" src="{% static 'hof.png' %}" /></label>
         </div>
         <!-- <input id="sampleHidden" type="hidden" name="hopjip"/> -->
         <div class="checkbox_bar"> 
-        <input id="gookbab"  type="checkbox" name="gookbab" value="True"> gookbab<br>
-                <label for="gookbab" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="gookbab"  type="checkbox" name="gookbab" value="True"> <br>
+                <label for="gookbab" ><img style="width: 9.5rem" src="{% static 'bab.png' %}" /></label>
         </div>
         <!-- <input id="sampleHidden" type="hidden" name="gookbab"/> -->
         <div class="checkbox_bar"> 
-        <input id="yang"  type="checkbox" name="yang" value="True"> yang<br>
-                <label for="yang" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="yang"  type="checkbox" name="yang" value="True"> <br>
+                <label for="yang" ><img style="width: 9.5rem" src="{% static 'yang.png' %}" /></label>
         </div>
         <!-- <input id="sampleHidden" type="hidden" name="yang"/> -->
         <div class="checkbox_bar"> 
-        <input id="hansik"  type="checkbox" name="hansik" value="True"> hansik<br>
-                <label for="hansik" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <input id="hansik"  type="checkbox" name="hansik" value="True"> <br>
+                <label for="hansik" ><img style="width: 9.5rem" src="{% static 'hansik.png' %}" /></label>
         </div>
         <!-- <input id="sampleHidden" type="hidden" name="hansik"/> -->
 
         </div>
 
+        <div class="bar_select_cont center">
 
+        <div class="checkbox_mood_cont">
+        <div class="pont">분위기는?</div>
 
+                <div class="checkbox_mood">
+                        <input id="mood1" type="checkbox" name="mood1" value="True">  <br>
+                        <!-- <input type="checkbox" id="myCheckbox1" /> -->
+                        <label for="mood1" ><img style="width: 9.5rem" id="mood11" src="{% static 'cozy.png' %}" /></label>
+                </div>
+                <div class="checkbox_mood"> 
+                        <input id="mood2"  type="checkbox" name="mood2" value="True"> <br>
+                        <label for="mood2"id="mood22" ><img style="width: 9.5rem" id="mood22" src="{% static 'dark.png' %}" /></label>
+                </div>
 
-        <div class="checkbox_inwon_cont">
+                <!-- <input id="sampleHidden" type="hidden" name="mood2"/> -->
+                <div class="checkbox_mood">
+                <input id="mood3"  type="checkbox" name="mood3" value="True"> <br>
+                        <label for="mood3" id="mood33" ><img style="width: 9.5rem" id="mood33" src="{% static 'date.png' %}" /></label>
+                </div>
+                <!-- <input id="sampleHidden" type="hidden" name="mood3"/> -->
+                <div class="checkbox_mood">
+                <input id="mood4"  type="checkbox" name="mood4" value="True"> <br>
+                        <label for="mood4" id="mood4" ><img style="width: 9.5rem" id="mood44" src="{% static 'free.png' %}" /></label>
+                </div>
+                <!-- <input id="sampleHidden" type="hidden" name="mood4"/> -->
+                <div class="checkbox_mood">
+                <input id="mood5"  type="checkbox" name="mood5" value="True"> <br>
+                        <label for="mood5" id="mood5" ><img style="width: 9.5rem" id="mood55" src="{% static 'hwal.png' %}" /></label>
+                </div>
+                <!-- <input id="sampleHidden" type="hidden" name="mood5"/> -->
+                <div class="checkbox_mood">
+                <input id="mood6"  type="checkbox" name="mood6" value="True"> <br>
+                        <label for="mood6" id="mood6" ><img style="width: 9.5rem" id="mood66" src="{% static 'nomatter.png' %}" /></label>
+                </div>
+                <!-- <input id="sampleHidden" type="hidden" name="mood6"/> -->
+                <div class="checkbox_mood"> 
+                <input id="mood7"  type="checkbox" name="mood7" value="True"> <br>
+                        <label for="mood7" id="mood7" ><img style="width: 9.5rem" id="mood77" src="{% static 'pyunan.png' %}" /></label>
+                </div>
+                <!-- <input id="sampleHidden" type="hidden" name="mood7"/> -->
+                <div class="checkbox_mood">
+                <input id="mood8"  type="checkbox" name="mood8" value="True"> <br>
+                        <label for="mood8" id="mood8" ><img style="width: 9.5rem" id="mood88" src="{% static 'quite.png' %}" /></label>
+                </div>
+                <!-- <input id="sampleHidden" type="hidden" name="mood8"/> -->
+
+        </div>
+
+        <div class="bar_select_cont center">
+        <div class="checkbox_inwon_cont center-align">
+        <div class="pont">몇명이야?</div>
                 <div class="checkbox_inwon"> 
-                <input id="inwon_xsmall"  type="checkbox" name="inwon_xsmall" value="True"> inwon_xsmall<br>
-                        <label for="inwon_xsmall" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+                <input id="inwon_xsmall"  type="checkbox" name="inwon_xsmall" value="True"> <br>
+                        <label for="inwon_xsmall" ><img style="width: 9.2rem" src="{% static 'ixs.png' %}" /></label>
                 </div>
                 <!-- <input id="sampleHidden" type="hidden" name="inwon_xsmall"/> -->
                 <div class="checkbox_inwon"> 
-                <input id="inwon_small"  type="checkbox" name="inwon_small" value="True"> inwon_small<br>
-                        <label for="inwon_small" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+                <input id="inwon_small"  type="checkbox" name="inwon_small" value="True"> <br>
+                        <label for="inwon_small" ><img style="width: 9.2rem" src="{% static 'is.png' %}" /></label>
                 </div>
                 <!-- <input id="sampleHidden" type="hidden" name="inwon_small"/> -->
                 <div class="checkbox_inwon"> 
-                <input id="inwon_medium"  type="checkbox" name="inwon_medium" value="True"> inwon_medium<br>
-                        <label for="inwon_medium" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+                <input id="inwon_medium"  type="checkbox" name="inwon_medium" value="True"> <br>
+                        <label for="inwon_medium" ><img style="width: 9.2rem" src="{% static 'im.png' %}" /></label>
                 </div>
                 <!-- <input id="sampleHidden" type="hidden" name="inwon_medium"/> -->
                 <div class="checkbox_inwon"> 
-                <input id="inwon_large"  type="checkbox" name="inwon_large" value="True"> inwon_large<br>
-                        <label for="inwon_large" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+                <input id="inwon_mmedium"  type="checkbox" name="inwon_memdium" value="True"> <br>
+                        <label for="inwon_mmedium" ><img style="width: 9.2rem" src="{% static 'imm.png' %}" /></label>
+                </div>
+                <!-- <input id="sampleHidden" type="hidden" name="inwon_medium"/> -->
+                <div class="checkbox_inwon"> 
+                <input id="inwon_large"  type="checkbox" name="inwon_large" value="True"> <br>
+                        <label for="inwon_large" ><img style="width: 9.2rem" src="{% static 'il.png' %}" /></label>
                 </div>
                 <!-- <input id="sampleHidden" type="hidden" name="inwon_large"/> -->
                 <div class="checkbox_inwon"> 
-                <input id="inwon_xlarge"  type="checkbox" name="inwon_xlarge" value="True"> inwon_xlarge<br>
-                        <label for="inwon_xlarge" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+                <input id="inwon_xlarge"  type="checkbox" name="inwon_xlarge" value="True"> <br>
+                        <label for="inwon_xlarge" ><img style="width: 9.2rem" src="{% static 'ixl.png' %}" /></label>
                 </div>
                 <!-- <input id="sampleHidden" type="hidden" name="inwon_xlarge"/> -->
-
-
         </div>
 
-
-
-
-        <div class="checkbox_hwa"> 
-        <input id="silwoi"  type="checkbox" name="silwoi" value="True"> silwoi<br>
-                <label for="silwoi" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <div class="bar_select_cont center">
+        <div class="checkbox_hwa_cont2">
+        <div class="pont">화장실은?</div>
+        <br>
+                <div class="pont">위치</div>
+                        <div class="checkbox_hwa"> 
+                        <input id="silwoi"  type="checkbox" name="silwoi" value="True"> <br>
+                                <label for="silwoi" ><img style="width: 6rem" src="{% static 'out.png' %}" /></label>
+                        </div>
+                        <!-- <input id="sampleHidden" type="hidden" name="silwoi"/> -->
+                        <div class="checkbox_hwa"> 
+                        <input id="silne"  type="checkbox" name="silne" value="True"> <br>
+                                <label for="silne" ><img style="width: 6rem" src="{% static 'in.png' %}" /></label>
+                        </div>
+                        <!-- <input id="sampleHidden" type="hidden" name="silne"/> -->
+                        <div class="checkbox_hwa"> 
+                        <input id="nomatter"  type="checkbox" name="nomatter" value="True"> <br>
+                                <label for="nomatter" ><img style="width: 6rem" src="{% static 'nomatter2.png' %}" /></label>
+                        </div>
+                        <!-- <input id="sampleHidden" type="hidden" name="nomatter"/> -->
         </div>
-        <!-- <input id="sampleHidden" type="hidden" name="silwoi"/> -->
-        <div class="checkbox_hwa"> 
-        <input id="silne"  type="checkbox" name="silne" value="True"> silne<br>
-                <label for="silne" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
+        <div class="checkbox_hwa_cont">
+        <br>
+                <div class="pont">남녀</div>
+                        <div class="checkbox_hwa"> 
+                        <input id="gongyong"  type="checkbox" name="gongyong" value="True"> <br>
+                                <label for="gongyong" ><img style="width: 6rem" src="{% static 'public.png' %}" /></label>
+                        </div>
+                        <!-- <input id="sampleHidden" type="hidden" name="gongyong"/> -->
+                        <div class="checkbox_hwa"> 
+                        <input  id="bulli" type="checkbox" name="bulli" value="True"> <br>
+                                <label for="bulli" ><img style="width: 6rem" src="{% static 'seperate.png' %}" /></label>
+                        </div>
+                        <!-- <input id="sampleHidden" type="hidden" name="bulli"/> -->
+                        <div class="checkbox_hwa"> 
+                        <input id="nomatter"  type="checkbox" name="nomatter" value="True"> <br>
+                                <label for="nomatter" ><img style="width: 6rem" src="{% static 'nomatter2.png' %}" /></label>
+                        </div>
+                        <!-- <input id="sampleHidden" type="hidden" name="nomatter"/> -->
         </div>
-        <!-- <input id="sampleHidden" type="hidden" name="silne"/> -->
-        <div class="checkbox_hwa"> 
-        <input id="gongyong"  type="checkbox" name="gongyong" value="True"> gongyong<br>
-                <label for="gongyong" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
         </div>
-        <!-- <input id="sampleHidden" type="hidden" name="gongyong"/> -->
-        <div class="checkbox_hwa"> 
-        <input  id="bulli" type="checkbox" name="bulli" value="True"> bulli<br>
-                <label for="bulli" ><img style="width: 5rem" src="{% static 'golden.jpg' %}" /></label>
         </div>
-        <!-- <input id="sampleHidden" type="hidden" name="bulli"/> -->
-
-
-
-
-</div>
 
         <div>
         <input class="select_done" type="submit" style="color:black;" >
@@ -210,89 +236,171 @@
 
 
 
-
-
-    {% for i in selected_bar %}
-    {{i}}
-    {% endfor %}
 </body>
 </html>
 
 
-
 <script>
-// $(document).ready(function(){
-// if ($('#sampleCheckbox').is(":checked")) {
-//     $('#sampleHidden').val('True');
-// } else {
-//     $('#sampleHidden').val('False');
-// }
-// });
 
+    document.getElementById('mood11').onclick = changeColor;   
+    function changeColor() {
+        document.getElementById('mood11').style.opacity = "0.7";
+        return false;
+        
+    document.getElementById('mood22').onclick = changeColor;   
+    function changeColor() {
+        document.getElementById('mood22').style.opacity = "0.7";
+        return false;
+    document.getElementById('mood33').onclick = changeColor;   
+    function changeColor() {
+        document.getElementById('mood33').style.opacity = "0.7";
+        return false;
+    document.getElementById('mood44').onclick = changeColor;   
+    function changeColor() {
+        document.getElementById('mood44').style.opacity = "0.7";
+        return false;
+    document.getElementById('mood55').onclick = changeColor;   
+    function changeColor() {
+        document.getElementById('mood55').style.opacity = "0.7";
+        return false;
+    document.getElementById('mood66').onclick = changeColor;   
+    function changeColor() {
+        document.getElementById('mood66').style.opacity = "0.7";
+        return false;
+    document.getElementById('mood77').onclick = changeColor;   
+    function changeColor() {
+        document.getElementById('mood77').style.opacity = "0.7";
+        return false;
+    document.getElementById('mood88').onclick = changeColor;   
+    function changeColor() {
+        document.getElementById('mood88').style.opacity = "0.7";
+        return false;
+    }   
 
 </script>
-<style>
 
-.checkbox-wrap { cursor: pointer; }
-.checkbox-wrap .check-icon  { display: inline-block; width: 100%; height: 5rem; background: url(../static/golden.jpg) left center no-repeat; vertical-align: middle; transition-duration: .3s; }
-.checkbox-wrap input[type=checkbox] { display: none; }
-.checkbox-wrap input[type=checkbox]:checked + .check-icon { background-image: url(../static/golden.jpg); }
-.checkbox_tw{
-    width: 10rem;
+
+<style>
+.checkbox_bar_cont>div>input{
+        width:0;
+        height:0;
+        color: #ffff;
 }
+.checkbox_mood_cont>div>input{
+        width:0;
+        height:0;
+        color: #ffff;
+        
+}
+.checkbox_inwon_cont>div>input{
+        width:0;
+        height:0;
+        color: #ffff;
+}
+.checkbox_hwa_cont>div>input{
+        width:0;
+        height:0;
+        color: #ffff;
+}
+.checkbox_hwa_cont2>div>input{
+        width:0;
+        height:0;
+        color: #ffff;
+}
+
+
+
+nav{
+        color: white;
+        background-color: white;
+        box-shadow:none;
+        width: 100%;
+        height: 56px;
+        line-height: 56px;
+    }
+    .nav_wrapper{
+        position: relative;
+        height: 100%;
+    }
+    .title{
+        position: absolute;
+        color: black;
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 0;
+        margin: 0 0 0 25%;
+        text-align: center;
+    }
+    .back{
+        float: left;
+        position: relative;
+        height: 56px;
+        margin: 0 18px;
+    }
+    nav a{
+        color: black;
+    }
+
 
 
 .bar_select_cont>input{
-        width:0;
-        height:0;
+        /* width:0;
+        height:0; */
 }
-
-
 .checkbox_mood_cont{
         display: inline-block;
         margin-bottom:5rem;
-        
-
+        margin-left: 0.7rem;
 }
 .checkbox_bar_cont{
         display: inline-block;
         margin-bottom:5rem;
+        margin-left: 0.7rem;
+        margin-top:1rem;
+
+}
+.checkbox_hwa_cont2{
+        display: inline-block;
+        margin-left: 0.7rem;
 
 }
 .checkbox_inwon_cont{
         display: inline-block;
         margin-bottom:5rem;
+        margin-left: 0.7rem;
+
 }
 .checkbox_hwa_cont{
         display: inline-block;
         margin-bottom:5rem;
+        margin-left: 0.7rem;
+
 }
 .checkbox_bar{
         float: left;
-        margin: 1rem;
-}
-
+        margin: 0rem 0.5rem 0rem 0.5rem;
+        }
 .checkbox_mood{
-float: left;
-margin: 1rem;
-}
-
+        float: left;
+        margin: 0rem 0.5rem 0rem 0.5rem;
+        }
 .checkbox_hwa{
         float: left;
-        margin: 1rem;
-}
-
+        margin: 0rem 0.5rem 0rem 0.5rem;
+        }
 .checkbox_inwon{
         float: left;
-        margin: 1em;
-}
+        margin: 0rem 0.5rem 0rem 0.5rem;
+        }
 .bar_select_cont{
-width:80%;
-display: inline-block;
-margin-left:10%;
+        width:100%;
+        display: inline-block;
+        margin-left:0%;
 
 }
-
+.pont{
+        margin-left:5%;
+}
 
 
 </style>

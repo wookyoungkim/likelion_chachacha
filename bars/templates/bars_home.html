@@ -1,51 +1,191 @@
-home
+{% load staticfiles %}
 
 
+<nav>
+    <div class="nav_wrapper">
+        <a href="{% url 'mypage' %}" class="back" alt="back">
+            <img src="{% static 'left.png' %}" alt="">뒤로
+        </a>
+
+        <p href="{% url 'mypage' %}" class="title">저장한 술집</p>
 
 
-<form action="{% url 'select' %}" method="POST">
-    {%csrf_token%}
+    </div>
+</nav>
 
-    {% for i in bar %}
-    {{i}}  
-    <input type="checkbox" value="{{i.id}}" name="bar_id_name">
-    {% endfor %}
+<div class="bar_select_cont">
 
 
-        {% if current_user.fourth %}
+    {% if current_user.fifth %}
     <br>
-        1차
-        {{current_user.first}}
-        <br>
-        2차
-        {{current_user.second}}
-        <br>
-        3차
-        {{current_user.third}}
-        <br>
-        4차
-        {{current_user.fourth}}
+    <div class="cha_number">
 
+    1차
+    </div>
+    <div class="cha_bar_card" style="background:url({{current_user.first.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+            <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+            {{current_user.first.name}}
+            </div>
+            <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+            {{current_user.first.summary}}
+            </div>
+        </div>
+        <div class="cha_number">
+
+    2차
+        </div>
+    <div class="cha_bar_card" style="background:url({{current_user.second.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+            <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+            {{current_user.second.name}}
+            </div>
+            <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+            {{current_user.second.summary}}
+            </div>
+        </div>
+        <div class="cha_number">
+
+    3차
+        </div>
+    <div class="cha_bar_card" style="background:url({{current_user.third.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+            <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+            {{current_user.third.name}}
+            </div>
+            <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+            {{current_user.third.summary}}
+            </div>
+        </div>
+        <div class="cha_number">
+
+        4차
+        </div>
+        <div class="cha_bar_card" style="background:url({{current_user.fourth.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+                <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+                {{current_user.fourth.name}}
+                </div>
+                <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+                {{current_user.fourth.summary}}
+                </div>
+            </div>
+            <div class="cha_number">
+
+        5차 
+            </div>
+        <div class="cha_bar_card" style="background:url({{current_user.fifth.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+                <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+                {{current_user.fifth.name}}
+                </div>
+                <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+                {{current_user.fifth.summary}}
+                </div>
+            </div>
+        
+        <br>
+        <div class="cha_mut" OnClick="location.href ='{% url 'done_select' %}'" style="cursor:pointer;" class="cha_mut"> 
+            이제 그만
+
+        </div>
+
+        {% elif current_user.fourth %}
+    <br>
+    <div class="cha_number">
+
+    1차
+    </div>
+    <div class="cha_bar_card" style="background:url({{current_user.first.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+            <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+            {{current_user.first.name}}
+            </div>
+            <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+            {{current_user.first.summary}}
+            </div>
+        </div>
+    <br>
+    <div class="cha_number">
+    2차
+</div>
+    <div class="cha_bar_card" style="background:url({{current_user.second.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+            <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+            {{current_user.second.name}}
+            </div>
+            <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+            {{current_user.second.summary}}
+            </div>
+        </div>
+    <br>
+    <div class="cha_number">
+
+    3차
+    </div>
+    <div class="cha_bar_card" style="background:url({{current_user.third.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+            <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+            {{current_user.third.name}}
+            </div>
+            <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+            {{current_user.third.summary}}
+            </div>
+        </div>
+    <br>
+        <div class="cha_number">
+        4차
+    </div>
+        <div class="cha_bar_card" style="background:url({{current_user.fourth.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+                <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+                {{current_user.fourth.name}}
+                </div>
+                <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; font-size:0.8rem;font-weight: 100;">
+                {{current_user.fourth.summary}}
+                </div>
+            </div>
+            <br>
+            <div class="cha_mut"> 
         5차 여기는 어때요?
+            </div>
         {% for a in bars %}
         {{i.name}}
         {{i.summary}}
         {% endfor %}
         <br>
         {% elif current_user.third %}
-<br>
+<div class="cha_number">
         1차
-        {{current_user.first}}
+</div>
+        <div class="cha_bar_card" style="background:url({{current_user.first.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+                <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+                {{current_user.first.name}}
+                </div>
+                <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+                {{current_user.first.summary}}
+                </div>
+            </div>
         <br>
+        <div class="cha_number">
         2차
-        {{current_user.second}}
+        </div>
+        <div class="cha_bar_card" style="background:url({{current_user.second.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+                <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+                {{current_user.second.name}}
+                </div>
+                <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+                {{current_user.second.summary}}
+                </div>
+            </div>
         <br>
+        <div class="cha_number">
         3차
-        {{current_user.third}}
+    </div>
+        <div class="cha_bar_card" style="background:url({{current_user.third.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+                <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+                {{current_user.third.name}}
+                </div>
+                <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+                {{current_user.third.summary}}
+                </div>
+            </div>
         <br>
 
-
+        <div class="cha_mut"> 
         4차 여기는 어때요?
+        </div>
         {% for a in bars %}
         {{i.name}}
         {{i.summary}}
@@ -55,14 +195,34 @@ home
 
         {% elif current_user.second %}
         <br>
+        <div class="cha_number">
         1차
-        {{current_user.first}}
+        </div>
+        <div class="cha_bar_card" style="background:url({{current_user.first.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+                <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+                {{current_user.first.name}}
+                </div>
+                <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+                {{current_user.first.summary}}
+                </div>
+            </div>
         <br>
+        <div class="cha_number">
         2차
-        {{current_user.second}}
+    </div>
+        <div class="cha_bar_card" style="background:url({{current_user.second.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+                <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+                {{current_user.second.name}}
+                </div>
+                <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+                {{current_user.second.summary}}
+                </div>
+            </div>
         <br>
-
+        </div>
+        <div class="cha_mut"> 
         3차 여기는 어때요?
+        </div>
         {% for a in bars %}
         {{i.name}}
         {{i.summary}}
@@ -70,11 +230,21 @@ home
         <br>
         {% elif current_user.first %}
         <br>
+        <div class="cha_number">
         1차
-        {{current_user.first}}
+    </div>
+        <div class="cha_bar_card" style="background:url({{current_user.first.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+            <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem;font-weight: 400;">
+            {{current_user.first.name}}
+            </div>
+            <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.2rem; color: white; font-size:0.8rem;font-weight: 100;">
+            {{current_user.first.summary}}
+            </div>
+        </div>
         <br>
-
+        <div class="cha_mut"> 
         2차 여기는 어때요?
+        </div>
         {% for a in bars %}
         {{i.name}}
         {{i.summary}}
@@ -82,23 +252,153 @@ home
         {% endfor %}
         <br>
 
+        {% elif current_user.first is none %}
+        <br>
+        
+        <div class="cha_mut"> 
+        1차 여기는 어때요?
+        </div>
+
+        <br>
+
     {% endif %}
 
-    <br><br>
-    {% for a in tmp_bar %}
-    {{a}}
-    {% endfor %}
-    <br><br>
-    <input class="btn btn-primary" type="submit" >
-</form>
-<br><br><br>
+    {% for a in bar %}
+    <label for="{{a.name}}" >
+    <div OnClick="location.href ='{% url 'bar_detail' a.id %}'" class="cha_bar_card" style="cursor:pointer;background:url({{a.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+        <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem; margin-top:1vh;font-weight: 400;">
+        {{a.name}}
+        </div>
+        <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.4rem; color: white; font-size:0.8rem; font-weight: 100;">
+        {{a.summary}}
+        </div>
+    </div>
+    </label>    
+    <input id="{{a.name}}" type="checkbox" value="{{a.id}}" name="bar_id_name" style="height:0; width:0;">
 
-<a href="{% url 'done_select' %}"> done </a>
+    {% endfor %}
+
+    
+    
 
 <br>
-<br><br><br><br><br><br><br>
-{{current_user.id}}
-<br><br><br><br><br><br><br><br><br>
-{% for a in bars %}
-{{a}}
-{% endfor %}
+<div class="cha_mut" OnClick="location.href ='{% url 'done_select' %}'" style="cursor:pointer;" class="cha_mut"> 
+        이제 그만
+
+    </div>
+
+
+</div>
+<div class="cha_mut_1" OnClick="location.href ='{% url 'bars_select' %}'" style="cursor:pointer;" class="cha_mut"> 
+        내가 찾아볼래요
+
+    </div>
+
+
+
+<style>
+    .cha_mut_1{
+        background-color: #ff7880;
+    height: 5vh;
+    border-radius: 14px;
+    text-align: center;
+    color: white;
+    vertical-align: middle;
+    padding-top:2vh;
+    width: 40%;
+    margin-left: 30%;
+    margin-top:20%;
+    }
+    input[type=submit] {
+        background-color: #ff7880;
+    height: 8vh;
+    border-radius: 14px;
+    text-align: center;
+    color: white;
+    vertical-align: middle;
+    padding-top:1vh;
+    width: 80%;
+    margin-left: 8%;
+    margin-top:20%;
+        font-size: 1.3rem;
+
+}
+
+.cha_number{
+    margin-left:13%;
+    margin-bottom:2%;
+    margin-top:2%;
+}
+
+.cha_mut{
+    background-color: #ff7880;
+    height: 5vh;
+    border-radius: 14px;
+    text-align: center;
+    color: white;
+    vertical-align: middle;
+    padding-top:2vh;
+    width: 80%;
+    margin-left: 10%;
+    margin-top:20%;
+
+}
+
+.bar_select_cont{
+
+width:100%;
+display: inline-block;
+}
+body{
+        background: #ffffff;
+    }
+    nav{
+    color: black;
+    background-color: white;
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+    box-shadow: none!important;
+    }
+    .nav_wrapper{
+        position: relative;
+        height: 100%;
+    }
+    .nav_wrapper > a{
+        top: 15;
+    }
+    .title{
+        position: absolute;
+        color: black;
+        display: inline-block;
+        font-size: 1.3rem;
+        padding: 0;
+        margin: 0 0 0 25%;
+        text-align: center;
+    }
+    .back{
+        float: left;
+        position: relative;
+        height: 56px;
+        margin: 0 18px;
+    }
+    nav a{
+        color: black;
+    }
+
+    .card{
+        border-radius: 1rem;
+        margin: 1;
+    }
+    .card-background{
+        background-size: cover;
+    }
+</style>
+
+
+<script>
+
+
+
+
+</script>

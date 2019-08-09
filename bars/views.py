@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from .models import Bar
-from users.models import User
+from users.models import User, Heart, Review
 # from .forms import ReviewForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -41,9 +41,14 @@ def home(request):
     return render(request, 'bars_home.html', {'bar':bars, 'current_user':current_user, 'tmp_bar':tmp_bar})
 
 def bar_detail(request, bar_id):
-    bar_detail=get_object_or_404(Bar, pk=bar_id)
-    return render(request, 'bar_detail.html',{'bar':bar_detail})
-
+        bar_detail=get_object_or_404(Bar, pk=bar_id)
+        bar_name=bar_detail.name
+        Bar_as = User.objects.filter(owner_bar_name=bar_name)
+        want_id=[]
+        for i in Bar_as:
+                want_id.append(i.id)
+        
+        return render(request, 'bars_detail.html', {'bar':bar_detail, 'want_id':want_id})
 #### 정혁
 def bar_detail_detail(request, bar_id):
         bar_detail_detail=get_object_or_404(Bar, pk=bar_id)
@@ -67,7 +72,7 @@ def bar_detail_detail(request, bar_id):
 #         reviews=Review.object.filter(review.reivew_bar=bar)
 #         return render(request, 'bars_detail_review.html', {'bar':bar, 'reviews':reviews})  우경이 진행중
     
-def bar_select(request):
+def bars_select(request):
         if request.method == 'POST':
                 q1 = Q()
                 q2 = Q()
@@ -318,7 +323,7 @@ def bar_select(request):
                 selected_bar = selected_bar.filter(q4)
 
 
-                return render(request, 'bars_select.html', {'selected_bar':selected_bar})
+                return render(request, 'bars_melong.html', {'selected_bar':selected_bar})
 
         
         return render(request, 'bars_select.html')
@@ -336,4 +341,11 @@ def bar_menu(request, bar_id):
         bar=get_object_or_404(Bar, id=bar_id)
         menu=bar.menu
         heart = Heart.objects.filter(user_heart=user,bar_heart=bar)
-        return render(request,'bar_detail_menu.html', {'bar':bar, 'menu':menu,'heart':heart,'user':user})
+        return render(request,'bars_detail_menu.html', {'bar':bar, 'menu':menu,'heart':heart,'user':user})
+
+def melong(request, selected_bar):
+        selected_bar = request.session['selected_bar']
+        ssibal = []
+        for i in selected_bar:
+                ssibal.append(i)
+        return render('bars_melong.html', {'selected_bar':ssibal})

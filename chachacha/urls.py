@@ -18,11 +18,15 @@ from django.urls import path, include
 import users.urls
 import bars.urls
 import maps.urls
+from django.conf.urls.static import static
+from django.conf import settings
+from users import views
 
 
 urlpatterns = [
+    path('', users.views.loading, name='loading'),
     path('admin/', admin.site.urls),
     path('bars/', include(bars.urls)),
     path('maps/', include(maps.urls)),
     path('users/', include(users.urls)),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -19,6 +19,7 @@
     </nav>
     <div class="container">
         <form method="POST" action="{% url 'signup_owner' %}">
+          {% csrf_token %}
         <div>
           <div>
             <p class="heading">아이디</p>
@@ -38,9 +39,13 @@
           </div>
 
           <div>
+              <p class="heading">술집 상호</p>
+              <textarea class="textbox" name="owner_bar_name" id="" cols="30" rows="10" placeholder="상호 입력"></textarea>
+          </div>
+          <div>
               <p class="heading">전화번호</p>
-              <textarea class="textbox" name="name" id="" cols="30" rows="10" placeholder="'-'구분 없이 입력"></textarea>
-            </div>
+              <textarea class="textbox" name="owner_bar_phone" id="" cols="30" rows="10" placeholder="번호 입력"></textarea>
+          </div>
 
           <br><br>
         </div>

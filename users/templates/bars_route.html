@@ -2,13 +2,18 @@
 {% load staticfiles %}
   <html>
     <head>
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </head>
 
     <body>
@@ -19,32 +24,24 @@
 
     <nav>
         <div class="nav_wrapper">
-            <a href="#!" class="back" alt="back" style="margin-right:0%;"><i class="material-icons">chevron_left</i></a>
+            
+            <a href="{% url 'mypage_bars' %}" class="back" alt="back" style="margin-right:0%;"><i class="material-icons">chevron_left</i></a>
             <div class="title center-align">마이 차차차</div>
         </div>
     </nav>
-    <div class="n" style="margin-left:5%; margin-right:5%; margin-top:10%;">
-    <center>
-    {% for i in routes %}
-        <div class="card-group" >
-            <div class="cards" ><!--style="col s12 m6 mx-auto"-->
-                <div class="card-image">
-                    <img src="#!">
+
+    <div class="container">
+        {% for route in routes %}
+            <a href="{% url 'route_detail' route.id %}">
+                <div class="card_container">
+                    <div class="card_image" style="background:url('{{ route.first_bar.first_image.url }}')"></div>
+                    <div class="route_name">{{route}}</div>
                 </div>
-                <div class="card-action">
-                    <a href="{% url 'route_detail' i.id%}" style="color:black">{{i}}</a>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
-    </center>
+                
+            </a>
+        {% endfor %}
     </div>
-
-  <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        
 </body>
 </html>
 
@@ -79,27 +76,36 @@ nav{
     nav a{
         color: black;
     }
+    .container{
+        width: 100%;
+        padding: 5%;
+        display: inline-block;
+        text-align: center;
+    }
 
-
-    .cards{
-        width: 48%;
+    .card_container{
+        float: left;
+        width: 45%;
+        height: 25vh;
         border-radius:0.7rem;
         box-shadow:none;
         border:solid 2px #ff7889;
-        padding: 3%;
-        display: inline-block;
-        float: left;
-        margin: 0.2rem;
-    }
-    .card-image{
-        border-radius:0.7rem;
-
-    }
-    .card-action{
-
+        margin: 1rem 0.5rem;
         border-radius:0.7rem;
     }
-    .material-icons{
-        medium: 4rem;
+    .card_image{
+        width: 100%;
+        height: 20vh;
     }
+    
+    .route_name{
+        padding: 5%;
+        color: black;
+        background-color: white;
+        border-top: solid thin #ff7889;
+        border-bottom: solid thin #ff7889;
+        border-bottom-left-radius: 0.7rem;
+        border-bottom-right-radius: 0.7rem;
+    }
+    
 </style>

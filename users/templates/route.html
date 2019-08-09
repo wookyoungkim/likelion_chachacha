@@ -21,16 +21,33 @@
             <div class="title">{{route.name_route}}</div>  
         </div>
     </nav>
-    
-    {% for bar in routes %}
-        <div class="bar_tag">
-            <a href="{% url 'bar_detail' bar.id %}">
-                <div class="bar_name">{{bar.name}}</div>
-                <div class="bar_keyword">{{bar.keyword}}</div>
-                <div class="bar_keyword">{{bar.summary}}</div>
-            </a>
+    <div class="container">  
+        <div class="n_cha">
+            {% for bar in routes %}
+                {% if bar == route.first_bar %}
+                    <div class="n_cha_text">1차</div>
+                {% elif bar == route.second_bar %}
+                    <div class="n_cha_text">2차</div>
+                {% elif bar == route.third_bar %}
+                    <div class="n_cha_text">3차</div>
+                {% elif bar == route.fourth_bar %}
+                    <div class="n_cha_text">4차</div>
+                {% else %}
+                    <div class="n_cha_text">5차/div>
+                {% endif %}
+
+                <div class="bar_tag" style="background:url({{ bar.first_image.url }});">
+                    <a href="{% url 'bar_detail' bar.id %}">
+                        <div class="bar_name">{{bar.name}}</div>
+                        <div class="bar_detail">{{bar.keyword}}</div>
+                        <div class="bar_detail">{{bar.summary}}</div>
+                    </a>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+        
+    </div>
+    
 </body>
 </html>
 
@@ -76,18 +93,28 @@
     }
     .bar_tag{
         background-color: rgb(155, 155, 155);
-        width: 80%;
+        width: 100%;
         padding: 2% 5%;
         height: 12vh;
         border-radius: 0.7rem;
-        margin-bottom: 3% !important;
-        margin:0 auto;
+        margin: 1% 0 5% 0;
     }
     .bar_name{
         color: white;
+        font-size: 1.2rem;
+        margin: 2% 0;
+        font-weight: bold;
     }
     .bar_detail{
         color: white;
         margin: 0;
+    }
+    .n_char{
+        margin-bottom: 2%;
+    }
+    .n_cha_text{
+        font-size: 1.2rem;
+        margin-left: 5%;
+        margin-bottom: 0;
     }
 </style>

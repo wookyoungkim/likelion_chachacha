@@ -1,0 +1,196 @@
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav_wrapper">
+            <a href="{% url 'users' %}" class="back" alt="back">
+                <img src="{% static 'left.png' %}" alt="">
+            </a>
+
+            <p href="#!" class="title">회원가입</p>
+
+            <a href="{% url 'users' %}" class="back" alt="back">
+                <img src="{% static 'more.png' %}" alt="">
+            </a>
+
+        </div>
+    </nav>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+    <footer class="page-footer">
+        <div class="divider"></div>
+        <div class="container asdf">
+            <div class="image1">
+                <img src="{% static 'map.png' %}" alt="">
+            </div>
+            <div class="image2">
+                <img src="{% static 'love.png' %}" alt=""> 
+            </div>
+            <div class="image3">
+                <img src="{% static 'start.png' %}" alt=""> 
+            </div>
+            <div class="image4">       
+                <img src="{% static 'mail.png' %}" alt="">  
+            </div>
+            <div class="image5">        
+                <img src="{% static 'mypage.png' %}" alt="">
+            </div>
+        </div>
+    </footer>
+    
+</body>
+
+<style>
+    nav{
+    color: black;
+    background-color: white;
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+    }
+    .nav_wrapper{
+        position: relative;
+        height: 100%;
+    }
+    .nav_wrapper > a{
+        top: 15;
+    }
+    .title{
+        position: absolute;
+        color: black;
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 0;
+        margin: 0 0 0 25%;
+        text-align: center;
+    }
+    .back{
+        float: left;
+        position: relative;
+        height: 56px;
+        margin: 0 18px;
+    }
+    nav a{
+        color: black;
+    }
+
+    /* body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    main {
+    flex: 1 0 auto;
+    } */
+
+    .page-footer {
+        color: #ee6e73;
+        background-color:  #fff;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .asdf{
+        text-align: center;
+        margin: 0;
+        width: 100%;
+        
+    }
+
+    .asdf > img{
+        width: 11%;
+        margin: 5;
+        
+    }
+    .image1{
+        display: inline-block;
+        width:18%;
+       
+    }
+    .image2{
+        display: inline-block;
+        width:18%;
+        
+    }
+    .image3{
+        display: inline-block;
+        width:18%;
+    }
+    .image4{
+        display: inline-block;
+        width:18%;
+       
+    }
+    .image5{
+        display: inline-block;
+        width:18%;
+        
+    }
+
+
+</style>
+
+<!-- <script>
+
+var image1 = document.querySelector('image1'),
+  image2 = document.querySelector('image2'),
+  image3 = document.querySelector('image3'),
+  image4 = document.querySelector('image4'),
+  image5 = document.querySelector('image5');
+
+function changeImage() {
+    if(image1.addEventListener){
+        image1.addEventListener('click', function(event){
+            this.img.src= "{% static 'map1.png' %}";
+        })
+        return false;
+    }
+    else if(image2.addEventListener){
+        image2.addEventListener('click', function(event){
+            this.img.src= "{% static '1.png' %}";
+        })
+        return false;
+    }
+
+  this.img.src= "{% static 'map1.png' %}";
+  return false;
+}
+
+function restoreImage() {
+  this.img.src = "";
+  return false;
+}
+
+
+
+image1.addEventListener('click', changeImage, false);
+image2.addEventListener('click', restoreImage, false);
+
+
+</script> -->
+
+
+</html>

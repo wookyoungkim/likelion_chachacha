@@ -1,0 +1,15 @@
+
+    {% for a in selected_bar %}
+    <label for="{{a.name}}" >
+    <div OnClick="location.href ='{% url 'bar_detail' a.id %}'" class="cha_bar_card" style="cursor:pointer;background:url({{a.first_image.url}}); width:80%; height:5rem; margin-left:10%; border-radius: 0.5rem; z-index: -999;">
+        <div class="cha_bar_card_name" style="z-index: 200; padding-left:2rem; padding-top:1rem; color: white; font-size:1rem; margin-top:1vh;font-weight: 400;">
+        {{a.name}}
+        </div>
+        <div class="cha_bar_card_summary" style="z-index: 200; padding-left:2rem; padding-top:0.4rem; color: white; font-size:0.8rem; font-weight: 100;">
+        {{a.summary}}
+        </div>
+    </div>
+    </label>    
+    <input id="{{a.name}}" type="checkbox" value="{{a.id}}" name="bar_id_name" style="height:0; width:0;">
+
+    {% endfor %}

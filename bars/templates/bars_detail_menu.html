@@ -15,7 +15,7 @@
     <body>
         <nav>
             <div class="nav_wrapper">
-                <a href="{% url 'users' %}" class="back" alt="back">뒤로</a>
+                <a href="{% url 'bar_detail' bar.id %}" class="back" alt="back">뒤로</a>
                 <p class="title">{{bar.name}}</p>
                 {% if heart %}
                     <a href="{% url 'user_heart' bar.id %}">

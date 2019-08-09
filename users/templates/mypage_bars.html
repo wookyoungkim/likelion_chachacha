@@ -18,7 +18,7 @@
     <nav>
         <div class="nav_wrapper">
             <a href="{% url 'users' %}" class="back" alt="back">
-                <img src="{% static 'left.png' %}" alt="">
+                    <i class="material-icons">chevron_left</i></a>
             </a>
 
             <p href="#!" class="title">저장한 술집</p>
@@ -31,7 +31,7 @@
         <div class="col s12 m6">
             {% if bar_list %}
             {% for bar in bar_list %}
-            <div class="card">
+            <a class="card" href="{% url 'bar_detail' bar.id %}">
                 <div class="card-content white-text" >
                     <div class="bar_tag">
                         <p class="bar_name" style="color:black;">{{bar.name}}</p>
@@ -39,7 +39,7 @@
                         <p class="bar_detail" style="color:black;">{{bar.summary}}</p>
                     </div>
                 </div>    
-            </div>
+            </a>
             </div>
             {% endfor %}
             {% else %}

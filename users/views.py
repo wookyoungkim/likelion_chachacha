@@ -17,6 +17,11 @@ from django.utils.formats import get_format
 def home(request):
     return render(request, 'users_home.html')
     
+def loading(request):
+    
+    return render(request,'loading.html')
+def mypage_home(request):
+    return render(request, 'mypage_home.html')
 
 # 로그인
 def login(request):
@@ -29,7 +34,7 @@ def login(request):
         user = auth.authenticate(request, username=username, password=password)        
         if user is not None:
             auth.login(request, user)
-            return render(request, 'users_home.html', {'user':user})
+            return render(request, 'maps_home.html', {'user':user})
     error_message = '잘못된 요청입니다. 다시 로그인해주세요.'  
     return render(request, 'login.html', {'error_message':error_message})
         
@@ -37,7 +42,6 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('users/')
-
 
 
 # 회원가입
@@ -59,7 +63,6 @@ def signup(request):
                 return redirect('/users')
     print("회원가입 안됨")
     return render(request, 'signup.html') 
-
 def signup_owner(request):
     if request.method == 'POST':
         if request.POST['password1'] == request.POST['password2']:
@@ -68,7 +71,7 @@ def signup_owner(request):
                 name=request.POST.get('name'), 
                 password=request.POST['password1'], 
                 # age=request.POST['age'],
-                gender=request.POST['gender'], 
+                # gender=request.POST['gender'], 
 
                 owner = True,                
                 owner_bar_name=request.POST['owner_bar_name'],
@@ -76,9 +79,9 @@ def signup_owner(request):
                 )
             if user is not None:
                 auth.login(request, user)
-                return redirect('/users')
+                return redirect('/users/login/success')
     print("회원가입 안됨")
-    return render(request, 'signup_owner.html') 
+    return render(request, 'signup_owner.html')
 
 #쪽지 보내기
 @login_required
@@ -214,7 +217,7 @@ def select(request):
         current_user.fifth = obj
         current_user.save()
     bars = Bar.objects.all
-    return redirect('home', {'bars':bars})
+    return redirect('home')
 
 
     
@@ -280,11 +283,13 @@ def mypage_bars(request):
     return render(request, 'mypage_bars.html', {'bar_list':bar_list})
 
 
-
 def mypage(request):
-    current_user = request.user
-    routes = Route.objects.filter(route_author=current_user)
-    return render(request,'bars_route.html', {'routes':routes})
+    user=request.user
+    routes=Route.objects.filter(route_author=user)
+
+    return render(request, 'bars_route.html',{'routes':routes})
+
+
 
 def route_detail(request, route_id):
     current_user = request.user
@@ -302,8 +307,5 @@ def route_detail(request, route_id):
         route_list.append(routes.fourth_bar)
     if routes.fifth_bar:
         route_list.append(routes.fifth_bar)
-
-    #route_show = Route.objects.annotate(id = route_detail_id)
-   # route_show = route_show[0].route_author
-    # return render(request,'route.html', {'routes':route_detail, 'route_pk':route_pk})   
+ 
     return render(request,'route.html', {'routes':route_list, 'route':routes})

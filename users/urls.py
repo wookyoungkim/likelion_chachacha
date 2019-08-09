@@ -44,9 +44,9 @@ urlpatterns =[
     path('done_select', users.views.done_select, name='done_select'),
     path('mypage_bars/', users.views.mypage_bars, name='mypage_bars'),
     path('mypage', users.views.mypage, name='mypage'),
-    path('route_detail/<int:route_id>', users.views.route_detail, name='route_detail')
-
-
+    path('route_detail/<int:route_id>', users.views.route_detail, name='route_detail'),
+    path('', users.views.loading, name='loading'),
+    path('mypage_home', users.views.mypage_home, name='mypage_home'),
 
 ]
 
