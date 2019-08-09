@@ -11,51 +11,94 @@ home
     <input type="checkbox" value="{{i.id}}" name="bar_id_name">
     {% endfor %}
 
-    {% if current_user.fifth %}
-    {{ 1차 }}
-    {{current_user.first}}
-    <br>
-    {{ 2차 }}
-    {{current_user.second}}
-    <br>
-    {{ 3차 }}
-    {{current_user.third}}
-    <br>
-    {{ 4차 }}
-    {{current_user.fourth}}
-    <br>
-    {{ 5차 }}
-    {{current_user.fifth}}
-    <br>
 
-    {% elif current_user.fourth and current_user.fifth == None %}
+        {% if current_user.fourth %}
+    <br>
+        1차
+        {{current_user.first}}
+        <br>
+        2차
+        {{current_user.second}}
+        <br>
+        3차
+        {{current_user.third}}
+        <br>
+        4차
+        {{current_user.fourth}}
 
-    {% if current_user.fifth %}
-    {{ 1차 }}
-    {{current_user.first}}
-    <br>
-    {{ 2차 }}
-    {{current_user.second}}
-    <br>
-    {{ 3차 }}
-    {{current_user.third}}
-    <br>
-    {{ 4차 }}
-    {{current_user.fourth}}
-    <br>
-    5차 여기는 어때요?
-    {% for a in bars %}
-    {{i.name}}
-    {{i.summary}}
+        5차 여기는 어때요?
+        {% for a in bars %}
+        {{i.name}}
+        {{i.summary}}
+        {% endfor %}
+        <br>
+        {% elif current_user.third %}
+<br>
+        1차
+        {{current_user.first}}
+        <br>
+        2차
+        {{current_user.second}}
+        <br>
+        3차
+        {{current_user.third}}
+        <br>
+
+
+        4차 여기는 어때요?
+        {% for a in bars %}
+        {{i.name}}
+        {{i.summary}}
+        {% endfor %}
+        <br>
+
+
+        {% elif current_user.second %}
+        <br>
+        1차
+        {{current_user.first}}
+        <br>
+        2차
+        {{current_user.second}}
+        <br>
+
+        3차 여기는 어때요?
+        {% for a in bars %}
+        {{i.name}}
+        {{i.summary}}
+        {% endfor %}
+        <br>
+        {% elif current_user.first %}
+        <br>
+        1차
+        {{current_user.first}}
+        <br>
+
+        2차 여기는 어때요?
+        {% for a in bars %}
+        {{i.name}}
+        {{i.summary}}
+        {{i.first_image}}
+        {% endfor %}
+        <br>
+
+    {% endif %}
+
+    <br><br>
+    {% for a in tmp_bar %}
+    {{a}}
     {% endfor %}
-
-
-
+    <br><br>
     <input class="btn btn-primary" type="submit" >
 </form>
-
+<br><br><br>
 
 <a href="{% url 'done_select' %}"> done </a>
 
-
-{{current_user_id}}
+<br>
+<br><br><br><br><br><br><br>
+{{current_user.id}}
+<br><br><br><br><br><br><br><br><br>
+{% for a in bars %}
+{{a}}
+{% endfor %}

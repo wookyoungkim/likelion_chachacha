@@ -3,12 +3,15 @@ from django.contrib import auth
 from django.shortcuts import render, redirect
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import User, Message, Heart, Review
+from .models import User, Message, Heart, Review, Route
 from django.db.models import Q
 from .forms import MessagePost
 from django.contrib.auth.decorators import login_required
 from bars.models import Bar
-
+from datetime import datetime
+from django.utils import formats
+from django.utils.dateformat import DateFormat
+from django.utils.formats import get_format
 
 # Create your views here.
 def home(request):
@@ -179,7 +182,7 @@ def select(request):
         df.format(get_format('DATE_FORMAT'))
         df.format('Y-m-d')
         tmp_first = request.POST['bar_id_name']
-        obj = Product.objects.get(pk=tmp_first)
+        obj = Bar.objects.get(pk=tmp_first)
         current_user = request.user
         current_user.first = obj
         current_user.first_date = dt
@@ -187,31 +190,47 @@ def select(request):
 
     elif not request.user.second:
         tmp_second = request.POST['bar_id_name']
-        obj = Product.objects.get(pk=tmp_second)
+        obj = Bar.objects.get(pk=tmp_second)
         current_user = request.user
         current_user.second = obj
         current_user.save()
 
     elif not request.user.third:
         tmp_third = request.POST['bar_id_name']
-        obj = Product.objects.get(pk=tmp_third)
+        obj = Bar.objects.get(pk=tmp_third)
         current_user = request.user
         current_user.third = obj
         current_user.save()
-    
-    return redirect('home')
+    elif not request.user.fourth:
+        tmp_fourth = request.POST['bar_id_name']
+        obj = Bar.objects.get(pk=tmp_fourth)
+        current_user = request.user
+        current_user.fourth = obj
+        current_user.save()
+    elif not request.user.fifth:
+        tmp_fifth = request.POST['bar_id_name']
+        obj = Bar.objects.get(pk=tmp_fifth)
+        current_user = request.user
+        current_user.fifth = obj
+        current_user.save()
+    bars = Bar.objects.all
+    return redirect('home', {'bars':bars})
 
 
     
 def done_select(request):
     route = Route()
     current_user = request.user
-    route.author = current_user
+    route.route_author = current_user
     route.pub_date = current_user.first_date
     route.first_bar = current_user.first
     if current_user.second:
         route.second_bar = current_user.second
-    elif current_user.thire:
+    elif current_user.third:
+        route.third_bar = current_user.third
+    elif current_user.fourth:
+        route.third_bar = current_user.third
+    elif current_user.fifth:
         route.third_bar = current_user.third
 
     route.save()
@@ -219,6 +238,9 @@ def done_select(request):
     current_user.first = None
     current_user.second = None
     current_user.third = None
+    current_user.fourth = None
+    current_user.fifth = None
+
 
     current_user.save()
 

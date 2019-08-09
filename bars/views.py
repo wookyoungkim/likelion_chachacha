@@ -14,11 +14,31 @@ import random
 def home(request):
     bars = Bar.objects.all()
     current_user = request.user
+    tmp_bar = []
+    if current_user.first:
+            tmp_bar.append(current_user.first)
+    else:
+            pass
+    if current_user.second:
+            tmp_bar.append(current_user.second)
+    else:
+            pass
+    if current_user.third:
+            tmp_bar.append(current_user.third)
+    else:
+            pass
+    if current_user.fourth:
+            tmp_bar.append(current_user.fourth)
+    else:
+            pass
+    if current_user.fifth:
+            tmp_bar.append(current_user.fifth)
+    else:
+            pass
 
-    out_bars = []
-    out_bars = random.choice(bars, k=4)
+    
 
-    return render(request, 'bars_home.html', {'bar':out_bars, 'current_user':current_user})
+    return render(request, 'bars_home.html', {'bar':bars, 'current_user':current_user, 'tmp_bar':tmp_bar})
 
 def bar_detail(request, bar_id):
     bar_detail=get_object_or_404(Bar, pk=bar_id)

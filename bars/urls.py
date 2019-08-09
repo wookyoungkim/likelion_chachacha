@@ -8,7 +8,7 @@ import bars.views
 # from users import views
 
 urlpatterns = [
-    path('', bars.views.home),
+    path('', bars.views.home, name='home'),
     path('detail/<int:bar_id>', bars.views.bar_detail, name='bar_detail'),
     # path('detail/<int:bar_id>/reviews', users.views.create_review, name='bar_review')
     path('detail/<int:bar_id>/reviews',bars.views.bar_review, name='bar_detail_review'),
