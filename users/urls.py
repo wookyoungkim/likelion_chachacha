@@ -47,6 +47,7 @@ urlpatterns =[
     path('route_detail/<int:route_id>', users.views.route_detail, name='route_detail'),
     path('', users.views.loading, name='loading'),
     path('mypage_home', users.views.mypage_home, name='mypage_home'),
+    path('about', users.views.about, name='about'),
 
 ]
 

@@ -13,6 +13,8 @@ from django.utils import formats
 from django.utils.dateformat import DateFormat
 from django.utils.formats import get_format
 
+def about(request):
+    return render(request, 'about.html')
 # Create your views here.
 def home(request):
     return render(request, 'users_home.html')
